@@ -4,7 +4,7 @@
 
 您来到了QuickSite的世界！
 
-这是一个由LiangYin与YinsTeam共同开发的基于Node.Js的博客框架。
+这是一个由LiangYin与YinsTeam共同开发的基于Node.JS的静态网站生成器。
 
 该项目处于初期,欢迎您的体验与反馈。
 
