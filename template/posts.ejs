@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <title><%= config.title %></title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <link rel="icon" href="<%- config.icon %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+    
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand mb-0 h1" href="./index.html"><%= config.title %></a>
+    </nav>
+    <br>
+    <div class="card" style="width: 70%;text-align: center;margin-left: auto;margin-right: auto;">
+        <article class="markdown-body">
+            <div class="card-body">
+                <h1 class="card-title"><%= posts.title %></h1>
+                <p class="card-text"><%- posts.content %></p>
+            </div>
+        </article>
+    </div>
+    <footer class="page-footer font-small blue">
+
+        <div class="footer-copyright text-center py-3">
+            Copyright © 2020
+            <a><%= config.author %></a>
+            <br>
+            Powered by
+            <a>QuickSite</a>
+        </div>
+
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+
+</html>
