@@ -12,6 +12,6 @@
         "baidu": "",
         "tencent": "",
         "google": "",
-        "baidu_sitemap": true
+        "baidu_sitemap": false
     }
 }

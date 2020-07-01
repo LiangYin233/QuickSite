@@ -22,7 +22,7 @@
         </script>
         <% } %>
     
-        <% if(config.baidu_sitemap != ""){ %>
+        <% if(config.analytics.baidu_sitemap == true){ %>
         <meta name="baidu-site-verification" content="<%= config.baidu_vertification%>" />
         <script>
             (function () {

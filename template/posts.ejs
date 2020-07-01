@@ -5,11 +5,13 @@
     <title><%= config.title %></title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css" rel="stylesheet">
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <meta charset="utf-8">
     <link rel="icon" href="<%- config.icon %>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="<%- sconfig.description %>">
+    <link rel="stylesheet" href="./css/highlight/default.css">
+    <script src="./highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     <% if (config.analytics.tencent != ""){ %>
     <script>
         var _mtac = {};
@@ -23,7 +25,7 @@
         })();
     </script>
     <% } %>
-    <% if(config.baidu_sitemap != ""){ %>
+    <% if(config.analytics.baidu_sitemap == true){ %>
     <meta name="baidu-site-verification" content="<%= config.baidu_vertification%>" />
     <script>
         (function () {
@@ -77,17 +79,18 @@
         </article>
         <p style="color: gray;">文章创建于 <%= posts.birthtime %> 最后修改于 <%= posts.mtime %></p>
         <% if(config.valine.enable == true){ %>
-            <div id="vcomments"></div>
-            <script>
-                new Valine({
-                    el: '#vcomments',
-                    appId: 'Your appId',
-                    appKey: 'Your appKey',
-                    placeholder: '<%- config.valine.placeholder %>',
-                    recordIP: true,
-                    enableQQ: true
-                })
-            </script>
+        <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+        <div id="vcomments"></div>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'Your appId',
+                appKey: 'Your appKey',
+                placeholder: '<%- config.valine.placeholder %>',
+                recordIP: true,
+                enableQQ: true
+            })
+        </script>
         <% } %>
     </div>
     <footer class="page-footer font-small blue">
