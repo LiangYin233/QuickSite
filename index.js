@@ -150,37 +150,38 @@ if (process.argv[2] == "build") {
         }
 
         // 生成Sitemap
-        var Sitemap = [];
-        Sitemap.push({
-            "url": {
-                "loc": sitejson.url + "index.html",
-                "lastmod": new Date().toISOString()
-            }
-        });
-        for (let i = 0; i < data.filename.length; i++) {
+        if (sitejson.sitemap == true) {
+            var Sitemap = [];
             Sitemap.push({
                 "url": {
-                    "loc": sitejson.url + data.filename[i] + ".html",
-                    "lastmod": new Date(data.birthtime[i]).toISOString()
+                    "loc": sitejson.url + "index.html",
+                    "lastmod": new Date().toISOString()
                 }
             });
-            if (templatefiles[i] != "index.ejs" && templatefiles[i] != "posts.ejs") {
+            for (let i = 0; i < data.filename.length; i++) {
                 Sitemap.push({
                     "url": {
-                        "loc": sitejson.url + String(templatefiles[i]).split(".")[0] + '.html',
-                        "lastmod": new Date(fs.statSync(process.cwd() + "/template/" + templatefiles[i]).birthtime).toISOString()
+                        "loc": sitejson.url + data.filename[i] + ".html",
+                        "lastmod": new Date(data.birthtime[i]).toISOString()
                     }
                 });
+                if (templatefiles[i] != "index.ejs" && templatefiles[i] != "posts.ejs") {
+                    Sitemap.push({
+                        "url": {
+                            "loc": sitejson.url + String(templatefiles[i]).split(".")[0] + '.html',
+                            "lastmod": new Date(fs.statSync(process.cwd() + "/template/" + templatefiles[i]).birthtime).toISOString()
+                        }
+                    });
+                }
             }
+            fs.writeFile(process.cwd() + '/public/' + 'sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>' + jsonxml({
+                "urlset": Sitemap
+            }), function (err) {
+                if (err) {
+                    return console.error("QuickSite Error:" + err);
+                }
+            });
         }
-        fs.writeFile(process.cwd() + '/public/' + 'sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>' + jsonxml({
-            "urlset": Sitemap
-        }), function (err) {
-            if (err) {
-                return console.error("QuickSite Error:" + err);
-            }
-        });
-        //
 
         console.log("The static web page was built in %dms", new Date().getTime() - starttime)
     }

@@ -73,7 +73,7 @@
     <div class="card" style="width: 50%;text-align: center;margin-left: auto;margin-right: auto;">
         <div class="card-body">
             <a class="card-title" href="<%= site.filename[i] %>.html"><%= site.titles[i] %></a>
-            <p class="card-text"><%- String(site.contents[i]).substring(0,50); %></p>
+            <p class="card-text"><%- String(site.contents[i]).replace(/<\/?.+?\/?>/g,"").substring(0,50); %></p>
         </div>
     </div>
     <br>
