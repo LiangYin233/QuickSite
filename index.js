@@ -164,6 +164,14 @@ if (process.argv[2] == "build") {
                     "lastmod": new Date(data.birthtime[i]).toISOString()
                 }
             });
+            if (templatefiles[i] != "index.ejs" && templatefiles[i] != "posts.ejs") {
+                Sitemap.push({
+                    "url": {
+                        "loc": sitejson.url + String(templatefiles[i]).split(".")[0] + '.html',
+                        "lastmod": new Date(fs.statSync(process.cwd() + "/template/" + templatefiles[i]).birthtime).toISOString()
+                    }
+                });
+            }
         }
         fs.writeFile(process.cwd() + '/public/' + 'sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>' + jsonxml({
             "urlset": Sitemap
