@@ -1,12 +1,13 @@
 {
   "name": "quicksite",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Quickly generate efficient, safe and beautiful static websites",
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
     "build": "node . build",
-    "new": "node . new"
+    "new": "node . new",
+    "clean": "node . clean"
   },
   "author": "LiangYin&YinsTeam",
   "license": "MIT",

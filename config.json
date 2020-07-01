@@ -1,5 +1,17 @@
 {
     "title": "QuickSite",
     "author": "YinsTeam",
-    "icon": "./favicon.ico"
+    "icon": "./favicon.ico",
+    "valine": {
+        "enable": false,
+        "appkey": "",
+        "appid": "",
+        "placeholder": ""
+    },
+    "analytics": {
+        "baidu": "",
+        "tencent": "",
+        "google": "",
+        "baidu_sitemap": true
+    }
 }
