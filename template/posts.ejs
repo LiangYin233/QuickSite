@@ -84,8 +84,8 @@
         <script>
             new Valine({
                 el: '#vcomments',
-                appId: 'Your appId',
-                appKey: 'Your appKey',
+                appId: '<%- config.valine.appid %>',
+                appKey: '<%- config.valine.appkey %>',
                 placeholder: '<%- config.valine.placeholder %>',
                 recordIP: true,
                 enableQQ: true
