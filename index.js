@@ -4,7 +4,6 @@ var MarkdownIt = require("markdown-it");
 var readline = require("readline");
 var jsonxml = require("jsontoxml");
 var md = new MarkdownIt();
-
 if (process.argv[2] == "build") {
     var data = {
         titles: [
@@ -57,16 +56,17 @@ if (process.argv[2] == "build") {
         var html = ejs.render(fs.readFileSync(process.cwd() + "/template/index.ejs", "utf8"), {
             config: json,
             site: data,
-            sconfig: sitejson
+            sconfig: sitejson,
+            filename: process.cwd() + '/template/index.ejs'
         });
 
         // 写index文件
         fs.writeFile(process.cwd() + "/public/" +
-         "index.html", html, function (err) {
-            if (err) {
-                return console.error("QuickSite Error:" + err);
-            }
-        });
+            "index.html", html, function (err) {
+                if (err) {
+                    return console.error("QuickSite Error:" + err);
+                }
+            });
 
         //渲染Posts页面
         for (let i = 0; i < data.filename.length; i++) {
@@ -127,7 +127,8 @@ if (process.argv[2] == "build") {
             html = ejs.render(fs.readFileSync(process.cwd() + "/template/posts.ejs", "utf8"), {
                 config: json,
                 posts: data_posts,
-                sconfig: sitejson
+                sconfig: sitejson,
+                filename: process.cwd() + '/template/posts.ejs'
             });
             fs.writeFile(process.cwd() + "/public/" + data.filename[i] + ".html", html, function (err) {
                 if (err) {
@@ -138,11 +139,12 @@ if (process.argv[2] == "build") {
 
         // 渲染自定义页面
         for (let i = 0; i < fs.readdirSync(process.cwd() + "/template/").length; i++) {
-            if (templatefiles[i] != "index.ejs" && templatefiles[i] != "posts.ejs") {
+            if (templatefiles[i] != "index.ejs" && templatefiles[i] != "posts.ejs" && String(templatefiles[i]).substring(0,1) != "-") {
                 html = ejs.render(fs.readFileSync(process.cwd() + "/template/" + templatefiles[i], "utf8"), {
                     config: json,
                     site: data,
-                    sconfig: sitejson
+                    sconfig: sitejson,
+                    filename: process.cwd() + '/template/' + templatefiles[i]
                 });
                 fs.writeFile(process.cwd() + "/public/" + String(templatefiles[i]).split(".")[0] + ".html", html, function (err) {
                     if (err) {
