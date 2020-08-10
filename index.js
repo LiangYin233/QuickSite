@@ -195,12 +195,10 @@ if (process.argv[2] == "build") {
     }
 }
 else if (process.argv[2] == null) {
-    console.log("QuickSite Beta2");
+    console.log("QuickSite Beta2SP1");
     console.log("Quickly generate efficient, safe and beautiful static websites")
     console.log("Usage: qs [command]");
     console.log("Command:\n  build - Generate static pages\n  new - Create new post\n  clean - Delete the public folder");
-    console.log("What has been updated in QuickSite Beta2?");
-    console.log("- Brand new mechanism\n- Template update\n- Fix major issues")
 }
 else if (process.argv[2] == "new") {
     const rl = readline.createInterface({
